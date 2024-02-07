@@ -1,5 +1,11 @@
 library(shiny)
 library(plotly)
+library(readr)
+
+source("modules/mod_date_input.r")
+source("modules/mod_input.r")
+
+coin_dt <- read_csv("data/coin_dt.csv")
 
 ui <- fluidPage(
   tags$head(
@@ -26,8 +32,7 @@ ui <- fluidPage(
   titlePanel("Cryptocurrency Market Analysis Dashboard", windowTitle = "Crypto Dashboard"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("cryptoSymbol", "Choose a Cryptocurrency:",
-                  choices = c("BTC", "ETH", "LTC", "XRP")), # Add more as needed
+      ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),
       dateRangeInput("dateRange", "Select Date Range:",
                      start = Sys.Date() - 30, end = Sys.Date())
     ),
@@ -41,14 +46,19 @@ ui <- fluidPage(
 server <- function(input, output) {
   output$pricePlot <- renderPlotly({
 
+    symbol_input <- server_input("cryptoSymbol",coin_dt)
     
-    plot_ly(data = ,x = ~dates, y = ~prices, 
-    type = 'scatter', mode = 'lines+markers',
-            marker = list(size = 10),
-            line = list(color = 'blue')) %>%
-      layout(title = paste("Price Trend for", input$cryptoSymbol),
+    coin_plot <- coin_dt[coin_dt$symbol == symbol_input(), ]
+    
+    coin_plot |>  plot_ly(x = ~timestamp, type="candlestick",
+                            open = ~open, close = ~close,
+                            high = ~high, low = ~low) |> 
+      layout(title = "BTC Price Movements",
              xaxis = list(title = "Date"),
-             yaxis = list(title = "Price (USD)"))
+             yaxis = list(title = "Price (USD)")) |> 
+      layout(plot_bgcolor='black') |>  
+      layout(paper_bgcolor='black')
+    
   })
 }
 

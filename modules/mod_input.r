@@ -2,12 +2,12 @@ library(shiny)
 
 
 
-ui_input <- function(id,title,choice_list) {
+ui_input <- function(id,title) {
 
     ns <- NS(id)
     selectInput(ns("s_input"),
-    title = title,
-    choices = choice_list)
+    label = title,
+    choices = NULL)
 }
 
 
@@ -15,7 +15,7 @@ server_input <- function(id, df) {
 
     moduleServer(
         id = id,
-        module = function(session,input,output) {
+        module = function(input,output,session) {
             
             updateSelectizeInput(session, "s_input",
             choices = unique(df$symbol),
