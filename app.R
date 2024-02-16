@@ -44,9 +44,11 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
+  
+  
+  symbol_input <- server_input("cryptoSymbol",coin_dt)
+  
   output$pricePlot <- renderPlotly({
-
-    symbol_input <- server_input("cryptoSymbol",coin_dt)
     
     coin_plot <- coin_dt[coin_dt$symbol == symbol_input(), ]
     
