@@ -20,3 +20,21 @@ Ensure you have R and the following R packages installed:
 
 ### Installation
 Clone this repository to your local machine:
+Navigate to the app directory and open the project in RStudio. Install the required R packages by running:
+
+```r
+install.packages(c("shiny", "crypto2", "dplyr", "PortfolioAnalytics"))
+```
+
+### Running the App
+In RStudio, open app.R and click on the "Run App" button, or run the following command in the R console:
+
+```r
+shiny::runApp('path/to/app')
+```
+
+### Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue.
+
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
