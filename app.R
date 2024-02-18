@@ -55,7 +55,7 @@ server <- function(input, output) {
     coin_plot |>  plot_ly(x = ~timestamp, type="candlestick",
                             open = ~open, close = ~close,
                             high = ~high, low = ~low) |> 
-      layout(title = "BTC Price Movements",
+      layout(title = paste(symbol_input(),"Price Movements"),
              xaxis = list(title = "Date"),
              yaxis = list(title = "Price (USD)")) |> 
       layout(plot_bgcolor='black') |>  
