@@ -4,6 +4,7 @@ library(readr)
 
 source("modules/mod_date_input.r")
 source("modules/mod_input.r")
+source("modules/mod_data.R")
 
 coin_dt <- read_csv("data/coin_dt.csv")
 
@@ -33,8 +34,8 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),
-      dateRangeInput("dateRange", "Select Date Range:",
-                     start = Sys.Date() - 30, end = Sys.Date())
+      ui_date(id = "date_main",title = "Select Date Range:")
+      
     ),
     mainPanel(
       plotlyOutput("pricePlot")
@@ -47,6 +48,10 @@ server <- function(input, output) {
   
   
   symbol_input <- server_input("cryptoSymbol",coin_dt)
+  
+  filtered_data <- server_data("filter_data",symbol_input,coin_dt)
+  
+  server_date(id = "date_main",filtered_data)
   
   output$pricePlot <- renderPlotly({
     
