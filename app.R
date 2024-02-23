@@ -15,7 +15,11 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),
-      ui_date(id = "date_main",title = "Select Date Range:")
+      ui_date(id = "date_main",title = "Select Date Range:"),
+      numericInput("riskPreference", 
+                   label = "Risk Preference (0 to 1)",
+                   value = 0.5),
+      actionButton("optimizeBtn", "Optimize Portfolio (in progress)")
       
     ),
     mainPanel(

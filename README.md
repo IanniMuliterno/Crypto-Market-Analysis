@@ -17,6 +17,10 @@ Ensure you have R and the following R packages installed:
 - `crypto2`
 - `dplyr`
 - `PortfolioAnalytics`
+- `DEoptim`
+- `ROI`
+- `ROI.plugin.quadprog`
+- `ROI.plugin.glpk`
 
 ### Installation
 Clone this repository to your local machine:
