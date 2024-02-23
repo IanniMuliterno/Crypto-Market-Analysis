@@ -16,15 +16,16 @@ server_date <- function(id, df) {
 
     moduleServer(
         id = id,
-        module = function(session,input,output) {
+        module = function(input,output,session) {
             
-          reactive( {
-            
+         reactive( {
+            req(df())
+           
             start_input <- max(df()$timestamp) - months(1)
             end_input <- max(df()$timestamp)
             min_input <- min(df()$timestamp)
             
-            updateDateRangeInput(session, "date_input",
+            updateDateRangeInput(session = session, "date_input",
                                  start = start_input,
                                  end = end_input,
                                  min = min_input,
@@ -32,6 +33,8 @@ server_date <- function(id, df) {
             
           })
           
+          selected_date <- reactive({input$date_input})
+          return(selected_date)
           
         }
     )

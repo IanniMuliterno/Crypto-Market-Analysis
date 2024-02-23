@@ -1,12 +1,12 @@
-server_data <- function(id,symbol,df) {
+server_data <- function(id,df,symbol) {
   moduleServer(
     id,
-    function(session, input, output) {
+    function(input, output,session) {
       
       filtered_data <- reactive( {
-        
+        req(symbol())
         df |> 
-          filter(symbol == symbol())
+          filter(symbol == symbol()) 
         
       })
       
