@@ -11,7 +11,7 @@ coin_dt <- read_csv("data/coin_dt.csv")
 
 ui <- fluidPage(
   theme = bslib::bs_theme(preset = "darkly"),
-  titlePanel("Cryptocurrency Market Analysis Dashboard", windowTitle = "Crypto Dashboard"),
+  titlePanel("Cryptocurrency Portfolio Optimization", windowTitle = "Crypto Dashboard"),
   sidebarLayout(
     sidebarPanel(
       ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),

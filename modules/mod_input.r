@@ -7,7 +7,8 @@ ui_input <- function(id,title) {
     ns <- NS(id)
     selectizeInput(ns("s_input"),
     label = title,
-    choices = NULL)
+    choices = NULL,
+    multiple = TRUE)
 }
 
 
