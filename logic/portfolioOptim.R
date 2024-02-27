@@ -1,4 +1,4 @@
-function(dt,risk){
+portOpt <- function(dt,risk){
   
   return_df <- dt |> 
     mutate(return = (close-open)/open) |> 
