@@ -7,6 +7,7 @@ source("modules/mod_input.r")
 source("modules/mod_data.R")
 source("modules/mod_priceplot.R")
 source("modules/mod_risk.R")
+source("modules/mod_wgt.R")
 
 coin_dt <- read_csv("data/coin_dt.csv")
 
@@ -18,7 +19,7 @@ ui <- fluidPage(
       ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),
       ui_date(id = "date_main",title = "Select Date Range:"),
       ui_risk("risk_preferene"),
-      actionButton("optimizeBtn", "Optimize Portfolio (in progress)")
+      actionButton("optimizeBtn", "Optimize Portfolio")
       
     ),
     mainPanel(
@@ -42,7 +43,9 @@ server <- function(input, output) {
   
   server_priceplot("price_plot",filtered_data, date_out)
   
-  server_weight("wgt_plot", filtered_data, risk)
+  act_btn <- reactive({ input$optimizeBtn })
+  
+  server_weight("wgt_plot", filtered_data, risk, act_btn)
 }
 
 shinyApp(ui = ui, server = server)

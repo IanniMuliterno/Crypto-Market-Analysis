@@ -13,11 +13,19 @@ server_priceplot <- function(id,df,date_output) {
     function(input, output, session) {
       
       output$pricePlot <- renderEcharts4r({
+        print(
+        df() |> 
+          filter(between(timestamp,date_output()[1], date_output()[2])) |>  
+          mutate(timestamp = substr(timestamp,1,10)) |> 
+          group_by(name) |> 
+          arrange(name,timestamp)
+        )
 
         df() |> 
           filter(between(timestamp,date_output()[1], date_output()[2])) |>  
           mutate(timestamp = substr(timestamp,1,10)) |> 
           group_by(name) |> 
+          arrange(name,timestamp) |> 
           e_charts(timestamp, timeline = TRUE) |> 
           e_candle(open, close, low, high, name = "crypto prices") |> 
           e_title(("Candlestick chart for opening and closing prices"),textStyle = list(color = "white")) |> 
