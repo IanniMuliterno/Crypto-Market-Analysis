@@ -5,7 +5,7 @@ account: ianmuliterno
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 11243901
-bundleId: 8293970
+bundleId: 8305104
 url: https://ianmuliterno.shinyapps.io/Crypto-Market-Analysis/
 version: 1
 asMultiple: FALSE
