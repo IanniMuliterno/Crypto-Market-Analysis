@@ -22,7 +22,7 @@ server_input <- function(id, df) {
             
             updateSelectizeInput(session,
                                  "s_input",
-                                 choices = unique(df$symbol),
+                                 choices = unique(df$name),
                                  server = TRUE)
             
             
