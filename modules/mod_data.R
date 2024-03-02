@@ -6,7 +6,7 @@ server_data <- function(id,df,name) {
       filtered_data <- reactive( {
         req(name())
         df |> 
-          filter(name == name()) 
+          filter(name %in% name()) 
         
       })
       

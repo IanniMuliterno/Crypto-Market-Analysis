@@ -9,6 +9,9 @@ portOpt <- function(dt, risk) {
     mutate(return = (close - open) / open) |>
     select(date = timestamp, name, return) |>
     tidyr::pivot_wider(names_from = name, values_from = return) |>
+    mutate(
+      across(everything(), ~tidyr::replace_na(.x, 0))
+    ) |>  
     janitor::clean_names()
   
   print(head(return_df)) # Print the head to check the structure
