@@ -2,7 +2,7 @@ ui_risk <- function(id) {
   ns <- NS(id)
   
   numericInput("riskPreference", 
-               label = "Risk Preference (0 to 1)",
+               label = "Risk Aversion (0 to 1)",
                value = 0.5,
               min = 0,
               max = 1,
