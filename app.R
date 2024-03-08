@@ -20,6 +20,8 @@ ui <- fluidPage(
       ui_date(id = "date_main",title = "Select Date Range:"),
       ui_risk("risk_preferene"),
       actionButton("optimizeBtn", "Optimize Portfolio"),
+      br(),
+      br(),
       bslib::card("Welcome, this app applies the buy and hold strategy, let's you choose a level of risk, and suggest how you should distribute your investment capital to optimize return.")
       
     ),
