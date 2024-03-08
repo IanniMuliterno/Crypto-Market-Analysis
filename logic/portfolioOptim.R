@@ -1,5 +1,6 @@
 library(dplyr)
 library(PortfolioAnalytics)
+library(DEoptim)
 library(tbl2xts)
 
 portOpt <- function(dt, risk) {
