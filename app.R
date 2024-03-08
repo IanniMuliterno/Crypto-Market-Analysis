@@ -19,7 +19,8 @@ ui <- fluidPage(
       ui_input(id = "cryptoSymbol",title= "Choose a Cryptocurrency:"),
       ui_date(id = "date_main",title = "Select Date Range:"),
       ui_risk("risk_preferene"),
-      actionButton("optimizeBtn", "Optimize Portfolio")
+      actionButton("optimizeBtn", "Optimize Portfolio"),
+      bslib::card("Welcome, this app applies the buy and hold strategy, let's you choose a level of risk, and suggest how you should distribute your investment capital to optimize return.")
       
     ),
     mainPanel(
