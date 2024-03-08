@@ -19,6 +19,11 @@ server_weight <- function(id,dt,risk,btn) {
         req(dt())
         req(btn())
         
+        validate(
+          need(dplyr::n_distinct(dt()$name) > 1, "Choose at least two crypto names to optimize your portfolio")
+        )
+        
+        
         portOpt(dt(),risk()) |> 
           e_charts(crypto) |> 
           e_bar(weights, barWidth = '50%') |>

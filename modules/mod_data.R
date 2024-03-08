@@ -4,7 +4,12 @@ server_data <- function(id,df,name) {
     function(input, output,session) {
       
       filtered_data <- reactive( {
-        req(name())
+        
+        validate(
+          need(!is.null(name()), "Choose one or more crypto names to see opening/closing prices")
+        )
+        
+        
         df |> 
           filter(name %in% name()) 
         
