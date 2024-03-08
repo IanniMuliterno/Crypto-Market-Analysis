@@ -13,12 +13,6 @@ server_priceplot <- function(id,df,date_output) {
     function(input, output, session) {
       
       output$pricePlot <- renderEcharts4r({
-        print(
-          df() |> 
-            filter(between(timestamp,date_output()[1], date_output()[2])) |>  
-            group_by(name) |> 
-            count()
-        )
         
         df() |> 
           filter(between(timestamp,date_output()[1], date_output()[2])) |>  
