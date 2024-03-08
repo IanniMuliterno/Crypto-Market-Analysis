@@ -9,6 +9,17 @@
     ]
   },
   "Packages": {
+    "DEoptim": {
+      "Package": "DEoptim",
+      "Version": "2.2-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods",
+        "parallel"
+      ],
+      "Hash": "3d75dd10e7228c9d734237dda013ed90"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-60",
